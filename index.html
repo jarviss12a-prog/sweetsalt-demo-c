@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet&Salt Cafe Bakery — Lincoln Park, Chicago</title>
+<meta name="description" content="Artisan pastries, European desserts & specialty coffee in the heart of Lincoln Park. Visit Sweet&Salt Cafe Bakery at 2413 N Clark St, Chicago.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --off-white: #FAFAF5;
+  --charcoal: #1A1A1A;
+  --terracotta: #C07B5F;
+  --cream: #F0EBE0;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--off-white);
+  color: var(--charcoal);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250, 250, 245, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.06);
+  transition: padding 0.3s ease;
+}
+nav.scrolled { padding: 0.8rem 3rem; }
+.nav-logo {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--terracotta); }
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav-links a {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--terracotta);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-order {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--charcoal);
+  color: var(--off-white);
+  padding: 0.65rem 1.6rem;
+  border-radius: 0;
+  transition: background 0.3s ease;
+}
+.nav-order:hover { background: var(--terracotta); }
+
+/* Mobile menu */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 20px;
+  position: relative;
+  z-index: 110;
+}
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--charcoal);
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+.menu-toggle.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem 4rem 4rem;
+}
+.hero-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 2rem;
+}
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--terracotta);
+}
+.hero-sub {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.btn-primary {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--charcoal);
+  color: var(--off-white);
+  padding: 1rem 2.2rem;
+  transition: background 0.3s ease;
+}
+.btn-primary:hover { background: var(--terracotta); }
+.btn-secondary {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  border-bottom: 2px solid var(--charcoal);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.btn-secondary:hover { color: var(--terracotta); border-color: var(--terracotta); }
+.hero-image {
+  position: relative;
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── PULL QUOTE ─── */
+.pull-quote {
+  padding: 5rem 4rem;
+  text-align: center;
+  background: var(--cream);
+}
+.pull-quote blockquote {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--charcoal);
+}
+.pull-quote .quote-line {
+  width: 60px;
+  height: 2px;
+  background: var(--terracotta);
+  margin: 1.5rem auto 0;
+}
+
+/* ─── MENU SHOWCASE (horizontal scroll) ─── */
+.menu-section {
+  padding: 6rem 0 6rem 4rem;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  padding-right: 4rem;
+}
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.section-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--charcoal);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: color 0.3s, border-color 0.3s;
+}
+.section-link:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+.menu-scroll {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+  padding-right: 4rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.menu-scroll::-webkit-scrollbar { display: none; }
+.menu-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  cursor: pointer;
+}
+.menu-card-img {
+  width: 320px;
+  height: 380px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.menu-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.menu-card:hover .menu-card-img img { transform: scale(1.06); }
+.menu-card-name {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.menu-card-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-card-desc {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 300;
+}
+.menu-card-price {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--terracotta);
+}
+
+/* ─── THE CRAFT ─── */
+.craft-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+.craft-image {
+  position: relative;
+  overflow: hidden;
+}
+.craft-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.craft-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4rem;
+  background: var(--cream);
+}
+.craft-content .section-label { margin-bottom: 0.75rem; }
+.craft-content .section-title { margin-bottom: 1rem; }
+.craft-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+  max-width: 460px;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+.craft-steps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.craft-step {}
+.craft-step-num {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--terracotta);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.craft-step-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.craft-step-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #666;
+  font-weight: 300;
+}
+
+/* ─── GALLERY ─── */
+.gallery-section {
+  padding: 6rem 4rem;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(1) img { height: 100%; min-height: 500px; }
+.gallery-item:nth-child(2) img,
+.gallery-item:nth-child(3) img,
+.gallery-item:nth-child(4) img,
+.gallery-item:nth-child(5) img { height: 250px; }
+
+.gallery-item .gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  transition: background 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay {
+  background: rgba(26, 26, 26, 0.2);
+}
+.gallery-overlay span {
+  font-family: var(--serif);
+  font-style: italic;
+  color: #fff;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── REVIEWS ─── */
+.reviews-section {
+  background: var(--charcoal);
+  color: var(--off-white);
+  padding: 6rem 4rem;
+}
+.reviews-section .section-label { color: var(--terracotta); }
+.reviews-section .section-title { color: var(--off-white); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 3rem;
+}
+.review-card {
+  border-top: 2px solid var(--terracotta);
+  padding-top: 2rem;
+}
+.review-stars {
+  color: var(--terracotta);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+.review-text {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.review-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250, 250, 245, 0.5);
+}
+
+/* ─── HOURS + LOCATION ─── */
+.info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+}
+.info-hours {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4rem;
+}
+.hours-list {
+  list-style: none;
+  margin-top: 2.5rem;
+}
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  font-size: 0.95rem;
+}
+.hours-day { font-weight: 500; }
+.hours-time { font-weight: 300; color: #777; }
+.hours-list li.closed .hours-time { color: var(--terracotta); font-weight: 500; }
+
+.info-map {
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 4rem;
+  text-align: center;
+}
+.map-pin {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.map-pin svg { width: 22px; height: 22px; fill: var(--off-white); }
+.info-address {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+.info-neighborhood {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.info-phone {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+.info-phone a:hover { color: var(--terracotta); }
+.info-ig {
+  font-size: 0.85rem;
+  color: var(--terracotta);
+  font-weight: 500;
+}
+
+/* ─── CTA ─── */
+.cta-section {
+  padding: 8rem 4rem;
+  text-align: center;
+  background: var(--off-white);
+}
+.cta-headline {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+.cta-headline em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+.cta-sub {
+  font-size: 1.05rem;
+  color: #777;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(26, 26, 26, 0.08);
+  font-size: 0.8rem;
+  color: #999;
+  font-weight: 300;
+}
+.footer-left { display: flex; gap: 2rem; align-items: center; }
+.footer-brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--charcoal);
+  font-size: 0.95rem;
+}
+.footer-credit a { color: var(--terracotta); font-weight: 500; }
+.footer-credit a:hover { text-decoration: underline; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 1024px) {
+  .craft-section { grid-template-columns: 1fr; }
+  .craft-image { height: 50vh; }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(1) img { min-height: 300px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .info-section { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  nav.scrolled { padding: 0.7rem 1.5rem; }
+  .nav-links, .nav-order-desk { display: none; }
+  .menu-toggle { display: block; }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--off-white);
+    z-index: 105;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .mobile-menu.active { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero-text { padding: 6rem 1.5rem 3rem; }
+  .hero-image { height: 60vh; }
+  .hero-headline { font-size: clamp(2.8rem, 10vw, 4rem); }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+
+  .pull-quote { padding: 3.5rem 1.5rem; }
+
+  .menu-section { padding: 4rem 0 4rem 1.5rem; }
+  .section-header { padding-right: 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .menu-card { flex: 0 0 260px; }
+  .menu-card-img { width: 260px; height: 300px; }
+
+  .craft-content { padding: 3rem 1.5rem; }
+  .craft-steps { grid-template-columns: 1fr; gap: 2rem; }
+
+  .gallery-section { padding: 4rem 1.5rem; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item:nth-child(1) { grid-column: span 1; }
+  .gallery-item:nth-child(1) img { min-height: 250px; }
+  .gallery-item:nth-child(2) img,
+  .gallery-item:nth-child(3) img,
+  .gallery-item:nth-child(4) img,
+  .gallery-item:nth-child(5) img { height: 220px; }
+
+  .reviews-section { padding: 4rem 1.5rem; }
+  .info-hours { padding: 3rem 1.5rem; }
+  .info-map { padding: 3rem 1.5rem; }
+  .cta-section { padding: 5rem 1.5rem; }
+
+  footer {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  .footer-left { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="#" class="nav-logo">Sweet<span>&</span>Salt</a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#craft">Our Craft</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://www.toasttab.com/local/order/sweet-salt-cafe-bakery-2413-2415-north-clark-street" target="_blank" class="nav-order nav-order-desk">Order Online</a>
+  <button class="menu-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu">
+  <a href="#menu" class="mobile-link">Menu</a>
+  <a href="#craft" class="mobile-link">Our Craft</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#reviews" class="mobile-link">Reviews</a>
+  <a href="#visit" class="mobile-link">Visit</a>
+  <a href="https://www.toasttab.com/local/order/sweet-salt-cafe-bakery-2413-2415-north-clark-street" target="_blank" class="mobile-link" style="color: var(--terracotta);">Order Online</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-tag reveal">Lincoln Park · Chicago</div>
+    <h1 class="hero-headline reveal reveal-delay-1">Every Bite,<br><em>A Story.</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">Artisan pastries and European desserts, crafted daily in the heart of Lincoln Park. Parisian soul, Chicago spirit.</p>
+    <div class="hero-ctas reveal reveal-delay-3">
+      <a href="https://www.toasttab.com/local/order/sweet-salt-cafe-bakery-2413-2415-north-clark-street" target="_blank" class="btn-primary">Order Online</a>
+      <a href="#menu" class="btn-secondary">Explore the Menu</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=800" alt="Fresh baked croissants at Sweet and Salt Cafe Bakery" loading="eager">
+  </div>
+</section>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<section class="pull-quote">
+  <blockquote class="reveal">
+    "We don't just bake — we pour a little of Paris into every pastry, right here on Clark Street."
+  </blockquote>
+  <div class="quote-line reveal reveal-delay-1"></div>
+</section>
+
+<!-- ═══ MENU SHOWCASE ═══ -->
+<section class="menu-section" id="menu">
+  <div class="section-header">
+    <div>
+      <div class="section-label reveal">What We Serve</div>
+      <h2 class="section-title reveal reveal-delay-1">The Menu</h2>
+    </div>
+    <a href="https://www.toasttab.com/local/order/sweet-salt-cafe-bakery-2413-2415-north-clark-street" target="_blank" class="section-link reveal">Full Menu →</a>
+  </div>
+  <div class="menu-scroll">
+    <div class="menu-card reveal">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=800" alt="Butter Croissant" loading="lazy">
+      </div>
+      <div class="menu-card-name">Butter Croissant</div>
+      <div class="menu-card-detail">
+        <span class="menu-card-desc">Flaky, golden, classic</span>
+        <span class="menu-card-price">$4.50</span>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-1">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1558024920-b41e1887dc32?w=800" alt="Cinnamon Roll" loading="lazy">
+      </div>
+      <div class="menu-card-name">Cinnamon Roll</div>
+      <div class="menu-card-detail">
+        <span class="menu-card-desc">House-made, gooey center</span>
+        <span class="menu-card-price">$5.50</span>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-2">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800" alt="Specialty Latte" loading="lazy">
+      </div>
+      <div class="menu-card-name">Specialty Latte</div>
+      <div class="menu-card-detail">
+        <span class="menu-card-desc">Crafted with care, always</span>
+        <span class="menu-card-price">$6.00</span>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-3">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800" alt="Shakshuka" loading="lazy">
+      </div>
+      <div class="menu-card-name">Shakshuka</div>
+      <div class="menu-card-detail">
+        <span class="menu-card-desc">Spiced tomato, poached eggs</span>
+        <span class="menu-card-price">$14.00</span>
+      </div>
+    </div>
+    <div class="menu-card reveal reveal-delay-4">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=800" alt="Tiramisu" loading="lazy">
+      </div>
+      <div class="menu-card-name">Tiramisu</div>
+      <div class="menu-card-detail">
+        <span class="menu-card-desc">Classic Italian, layered</span>
+        <span class="menu-card-price">$8.50</span>
+      </div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="menu-card-img">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800" alt="Pour Over Coffee" loading="lazy">
+      </div>
+      <div class="menu-card-name">Pour Over</div>
+      <div class="menu-card-detail">
+        <span class="menu-card-desc">Single origin, seasonal</span>
+        <span class="menu-card-price">$5.00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PULL QUOTE 2 ═══ -->
+<section class="pull-quote" style="background: var(--off-white);">
+  <blockquote class="reveal">
+    "The smell of fresh croissants at 6 AM — that's our love letter to the neighborhood."
+  </blockquote>
+  <div class="quote-line reveal reveal-delay-1"></div>
+</section>
+
+<!-- ═══ THE CRAFT ═══ -->
+<section class="craft-section" id="craft">
+  <div class="craft-image">
+    <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800" alt="Inside the Sweet and Salt bakery kitchen" loading="lazy">
+  </div>
+  <div class="craft-content">
+    <div class="section-label reveal">Behind the Counter</div>
+    <h2 class="section-title reveal reveal-delay-1">The Craft</h2>
+    <p class="craft-intro reveal reveal-delay-2">Every morning before the sun rises over Lincoln Park, our bakers begin a ritual — one that turns simple ingredients into something unforgettable.</p>
+    <div class="craft-steps">
+      <div class="craft-step reveal">
+        <div class="craft-step-num">01</div>
+        <div class="craft-step-title">Source</div>
+        <p class="craft-step-text">Local dairy, European-style butter, seasonal fruit from Midwest farms.</p>
+      </div>
+      <div class="craft-step reveal reveal-delay-1">
+        <div class="craft-step-num">02</div>
+        <div class="craft-step-title">Mix</div>
+        <p class="craft-step-text">Recipes perfected over years — traditional technique, no shortcuts.</p>
+      </div>
+      <div class="craft-step reveal reveal-delay-2">
+        <div class="craft-step-num">03</div>
+        <div class="craft-step-title">Bake</div>
+        <p class="craft-step-text">Low and slow, or blazing hot. Every item has its own rhythm.</p>
+      </div>
+      <div class="craft-step reveal reveal-delay-3">
+        <div class="craft-step-num">04</div>
+        <div class="craft-step-title">Serve</div>
+        <p class="craft-step-text">Warm from the oven, plated with care. The way it should be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="gallery-section" id="gallery">
+  <div class="section-label reveal">A Visual Feast</div>
+  <h2 class="section-title reveal reveal-delay-1">The Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=800" alt="Artisan bread and pastry closeup" loading="lazy">
+      <div class="gallery-overlay"><span>Fresh from the oven</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800" alt="Latte art" loading="lazy">
+      <div class="gallery-overlay"><span>Latte art</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1558024920-b41e1887dc32?w=800" alt="Cinnamon rolls" loading="lazy">
+      <div class="gallery-overlay"><span>Cinnamon rolls</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1486427944544-d2c246c4df14?w=800" alt="Pastry display" loading="lazy">
+      <div class="gallery-overlay"><span>Pastry display</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800" alt="Morning coffee" loading="lazy">
+      <div class="gallery-overlay"><span>Morning ritual</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="reviews-section" id="reviews">
+  <div class="section-label reveal">What People Say</div>
+  <h2 class="section-title reveal reveal-delay-1">Rave Reviews</h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The croissants here are the best I've had outside of Paris. Flaky, buttery perfection. This place is Lincoln Park's best-kept secret."</p>
+      <div class="review-author">— Sarah M., Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Their shakshuka changed my brunch game forever. The vibe is so cozy and European — like being transported to a café in Montmartre."</p>
+      <div class="review-author">— David K., Yelp</div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I come here every Saturday for a cinnamon roll and a latte. The staff remembers your name. It feels like home."</p>
+      <div class="review-author">— Emily R., Google Reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOURS + LOCATION ═══ -->
+<section class="info-section" id="visit">
+  <div class="info-hours">
+    <div class="section-label reveal">Plan Your Visit</div>
+    <h2 class="section-title reveal reveal-delay-1">Hours</h2>
+    <ul class="hours-list reveal reveal-delay-2">
+      <li class="closed">
+        <span class="hours-day">Monday</span>
+        <span class="hours-time">Closed</span>
+      </li>
+      <li>
+        <span class="hours-day">Tuesday</span>
+        <span class="hours-time">8:00 AM – 5:00 PM</span>
+      </li>
+      <li>
+        <span class="hours-day">Wednesday</span>
+        <span class="hours-time">8:00 AM – 5:00 PM</span>
+      </li>
+      <li>
+        <span class="hours-day">Thursday</span>
+        <span class="hours-time">8:00 AM – 5:00 PM</span>
+      </li>
+      <li>
+        <span class="hours-day">Friday</span>
+        <span class="hours-time">8:00 AM – 5:00 PM</span>
+      </li>
+      <li>
+        <span class="hours-day">Saturday</span>
+        <span class="hours-time">8:00 AM – 7:00 PM</span>
+      </li>
+      <li>
+        <span class="hours-day">Sunday</span>
+        <span class="hours-time">8:00 AM – 6:00 PM</span>
+      </li>
+    </ul>
+  </div>
+  <div class="info-map">
+    <div class="map-pin reveal">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    </div>
+    <div class="info-address reveal reveal-delay-1">2413 N Clark St<br>Chicago, IL 60614</div>
+    <div class="info-neighborhood reveal reveal-delay-2">Lincoln Park</div>
+    <div class="info-phone reveal reveal-delay-2"><a href="tel:+12487527367">(248) 752-7367</a></div>
+    <a href="https://instagram.com/sweetsaltcafebakery" target="_blank" class="info-ig reveal reveal-delay-3">@sweetsaltcafebakery</a>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <h2 class="cta-headline reveal">Visit Us on<br><em>Clark Street.</em></h2>
+  <p class="cta-sub reveal reveal-delay-1">Fresh pastries, warm coffee, and a little bit of Paris — waiting for you.</p>
+  <a href="https://www.toasttab.com/local/order/sweet-salt-cafe-bakery-2413-2415-north-clark-street" target="_blank" class="btn-primary reveal reveal-delay-2">Order Online</a>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-left">
+    <span class="footer-brand">Sweet&Salt Cafe Bakery</span>
+    <span>© 2026 Sweet&Salt Cafe Bakery LLC. All rights reserved.</span>
+  </div>
+  <div class="footer-credit">Website by <a href="#">Corner Digital Group</a></div>
+</footer>
+
+<script>
+// ─── Scroll reveal ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── Nav scroll effect ───
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// ─── Mobile menu ───
+const toggle = document.querySelector('.menu-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+toggle.addEventListener('click', () => {
+  toggle.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── Smooth scroll for anchor links ───
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
